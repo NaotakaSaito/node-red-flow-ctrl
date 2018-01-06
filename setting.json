@@ -1,0 +1,16 @@
+{
+	"backup": false,
+	"mqtt" : {
+		"topic": "flow/publish",
+		"connection": {
+			"host": "ec2-54-238-209-176.ap-northeast-1.compute.amazonaws.com",
+			"port": 1883
+		}
+	},
+	"node-red": {
+		"flows" : "/home/naotaka/.node-red/flows_debian.json",
+		"start" : "sudo systemctl start nodered",
+		"stop" : "sudo systemctl stop nodered",
+		"interval": 1
+	}
+}

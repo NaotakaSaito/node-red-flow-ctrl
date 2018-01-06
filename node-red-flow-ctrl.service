@@ -1,0 +1,28 @@
+# This script work on any system using systemd as the init process.
+# It works on Debian/Raspbian Jessie.
+# If you have Debian/Rapbian Wheezy and want to use this script with systemd 
+# follow the information here : https://wiki.debian.org/systemd
+
+# To easily download, install and set at startup:
+# wget -O /tmp/download https://gist.github.com/Belphemur/3f6d3bf211b0e8a18d93/download && sudo tar -zxf /tmp/download --strip-components 1 -C /etc/systemd/system/ && sudo systemctl --reload-daemon && sudo systemctl enable Node-RED
+
+[Unit]
+Description=JOB manager of Node red by ruby
+After=syslog.target network.target
+Documentation=http://github.com/NaotakaSaito/node-red-flow-ctrl
+
+[Service]
+ExecStart=/usr/bin/ruby main-sub.rb
+WorkingDirectory=/home/pi/node-red-flow-ctrl/
+User=pi
+Group=root
+Nice=10
+SyslogIdentifier=node-red-flow-ctrl
+StandardOutput=syslog
+# Make Node-RED restart if it fails
+Restart=on-failure
+# Node-RED need a SIGINT to be notified to stop
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
