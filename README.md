@@ -26,7 +26,7 @@ setting.jsonの内容を使用する内容に変更してください。
 	"mqtt" : {
 		"topic": "flow/publish",
 		"connection": {
-			"host": "AAAAAAAAAAA.iot.ap-northeast-1.amazonaws.com",
+			"host": "endpoint.iot.ap-northeast-1.amazonaws.com",
 			"port": 8883,
 			"ssl": true,
 			"cert_file": "cert.pem",
@@ -108,10 +108,12 @@ WantedBy=multi-user.target
 
 ## ローカルのフローをpublishする方法
 以下のようにシンプルなフローを作成すればMQTT brokerにフローをpublishすることができます。
+
 ![Node-RED flow](nodered_flow.png)
 
 file inノードはこのように設定を行ってください。
 injectionでトリガーが発生すると、ファイルの内容をtextで出力し、それをMQTT brokerにpublishします。
+
 ![file in node](fileinnode.png)
 
 ## スクリプトとフローをpublishする場合
@@ -119,7 +121,7 @@ injectionでトリガーが発生すると、ファイルの内容をtextで出�
 
 ```
 {
-    "batch": "cd ~\ncd .node-red\nls\n",
-		"flows"	: node-redのフロー
+	"batch": "cd ~\ncd .node-red\nls\n",
+	"flows"	: node-redのフロー
 }
 ```
