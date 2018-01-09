@@ -113,3 +113,13 @@ WantedBy=multi-user.target
 file inノードはこのように設定を行ってください。
 injectionでトリガーが発生すると、ファイルの内容をtextで出力し、それをMQTT brokerにpublishします。
 ![file in node](fileinnode.png)
+
+## スクリプトとフローをpublishする場合
+このようにbatchとflowsというkeyのJSON形式でpublishすると、flosのフローをnode-redに適用しつつ、batchを実行してnode-redを再起動します。これでnodeの変更・追加なども行うことができます。
+
+```
+{
+    "batch": "cd ~\ncd .node-red\nls\n",
+		"flows"	: node-redのフロー
+}
+```
